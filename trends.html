@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Real-Time Clothing Trends</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #fff;
+      font-family: 'Arial', sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px 0;
+      margin-bottom: 30px;
+    }
+    nav a {
+      color: #ff69b4;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #ff1493;
+    }
+    h2 {
+      color: #ff69b4;
+      margin-bottom: 30px;
+    }
+    .trend-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .trend-card {
+      background-color: #ffe6f0;
+      border-radius: 20px;
+      width: 220px;
+      padding: 15px;
+      box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);
+      text-align: center;
+    }
+    .trend-card img {
+      width: 100%;
+      border-radius: 15px;
+    }
+    .trend-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #ff69b4;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="RIYA.html">Home</a>
+    <a href="trends.html">Real-Time Trends</a>
+    <a href="insights.html">Fashion Insights</a>
+    <a href="login.html">Login / Sign Up</a>
+    <a href="india-collection.html">India's Collection</a>
+  </nav>
+  <h2>🌍 Real-Time Clothing Trends</h2>
+  <div class="trend-container" id="trendContainer"></div>
+  <script>
+    const trendImages = [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO2Bvn4dYNrRGhPaclvLDWedgxtoc7zgAMfA&s",
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D",
+      "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?cs=srgb&dl=pexels-jmendezrf-1536619.jpg&fm=jpg"
+    ];
+    const trends = [
+      { title: 'Oversized Blazer', image: trendImages[0] },
+      { title: 'Streetwear Hoodie', image: trendImages[1] },
+      { title: 'Boho Maxi Dress', image: trendImages[2] },
+      { title: 'Pinterest Fits', image: trendImages[0] },
+      { title: 'Ethnic Wear', image: trendImages[1] }
+    ];
+    const trendContainer = document.getElementById('trendContainer');
+    function updateTrends() {
+      const randomTrend = trends[Math.floor(Math.random() * trends.length)];
+      const card = document.createElement('div');
+      card.className = 'trend-card';
+      card.innerHTML = `
+        <img src="${randomTrend.image}" alt="${randomTrend.title}">
+        <div class="trend-title">${randomTrend.title}</div>
+      `;
+      trendContainer.prepend(card);
+      if (trendContainer.childElementCount > 10) {
+        trendContainer.lastChild.remove();
+      }
+    }
+    setInterval(updateTrends, 5000);
+    for (let i = 0; i < 5; i++) updateTrends();
+  </script>
+</body>
+</html>
